@@ -1,0 +1,17 @@
+{
+  "checks": {
+    "memory": {
+<% if @memcrit == nil %>
+      "command": "/etc/sensu/plugins/check-mem.sh -w <%= @memwarn %> -c 64",
+<% elsif @memwarn == nil %>
+      "command": "/etc/sensu/plugins/check-mem.sh -w 128 -c <%= @memcrit %>",
+<% elsif @memcrit == nil and @memwarn == nil %>
+      "command": "/etc/sensu/plugins/check-mem.sh -w 128 -c 64",
+<% end %>
+      "interval": 10,
+      "subscribers": [
+        "test"
+      ]
+    }
+  }
+}

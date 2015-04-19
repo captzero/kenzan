@@ -1,0 +1,12 @@
+{
+  "handlers": {
+    "default": {
+<% if @handler_type == nil %>
+      "type": "pipe",
+<% else %>
+      "type": "<%= @handler_type %>"
+<% end %>
+      "command": "cat"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+# Fact: sensu_role
+#
+# Purpose: set the rold of the system within the sensu ecosystem
+#
+# Resolution:
+#   OS agnostic, no special handling needed
+#
+# Caveats:
+#
+
+Facter.add(:sensu_role) do
+    setcode do
+<% if @sensu_role == nil %>
+        sensu_role = "server"
+<% else %>
+        sensu_role = <%= @sensu_role %>
+<% end %>
+    end
+end
